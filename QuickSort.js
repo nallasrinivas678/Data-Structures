@@ -1,4 +1,4 @@
-  //let arr = [7,2,1,6,8,5,3,4];
+ 
     let arr = [34,2,36,8,92,1,3,82,35,95,86,73,28,30,211,194,127,248,271,22,371];
 
     function Partition(arr,startIndex,endIndex)
