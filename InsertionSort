@@ -1,3 +1,4 @@
+//Time complexity Worst case O(n2), Best case O(n)
 function insertionSort(arr){
     
     //always start from 1st element not from 0th
