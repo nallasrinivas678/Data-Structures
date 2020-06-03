@@ -1,0 +1,32 @@
+function selectionSort(arr){
+    //Time complexity - O(n2)
+    
+    for(var i=0;i<arr.length;i++){
+        let min = i;
+        
+        //loop from the second element, so j = i+1
+        for(var j=i+1;j<arr.length;j++){
+                        
+            //if val of j < val of min 
+            // if 22 < 34, then set min = j
+            if(arr[j] < arr[min]){
+                min = j;
+            }
+            
+        }
+
+        //swap only if min is not equal to i
+        if(i !== min){
+
+            //swapping
+            var temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+    }
+
+    return arr;
+}
+
+
+selectionSort([34,22,10,19,17])
