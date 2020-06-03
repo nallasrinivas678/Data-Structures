@@ -1,3 +1,4 @@
+//Time complexity - Best case O(n2), worst case O(n2)
 function selectionSort(arr){
     //Time complexity - O(n2)
     
