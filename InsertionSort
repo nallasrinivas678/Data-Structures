@@ -1,0 +1,26 @@
+function insertionSort(arr){
+    
+    //always start from 1st element not from 0th
+    for(var i=1;i<arr.length;i++){
+
+        //set firts element to key
+        var key = arr[i];
+
+        //set j as 0th element
+        var j = i-1;
+
+        //now compare if 0th element greater than 1st element
+        //if so, swap element and 
+     while(j >= 0 && arr[j] > key){
+        arr[j+1] = arr[j];
+        j = j-1;
+     }
+     //set the key to new postion
+     arr[j+1] = key;
+
+    }
+
+    return arr;
+}
+
+insertionSort([2,1,9,76,4])
