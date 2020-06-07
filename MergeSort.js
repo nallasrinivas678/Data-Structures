@@ -7,62 +7,49 @@
     //Time Complexity in worst scneario O(nlog n)
 
 
-    //sample array for testing.
-    let array = [34,2,36,8,92,1,3,82,35,95,86,73,28,30,211,194,127,248,271,22,371];
-
-    function Merge(l,r,a){
-        let llen = l.length;
-        let rlen = r.length;
-        let i=0,j=0,k=0;
-        while(i<llen && j < rlen){
-            if(l[i] <= r[j]){
-                a[k] = l[i];
-                k = k+1;
-                i = i+1;
-            }
-            else{
-                a[k] = r[j];
-                k = k+1;
-                j = j+1;
-            }
-
+ function merge(arr1,arr2){
+    let res = [];
+    let i=0;
+    let j=0;
+    
+    //compare elements from two arrays till its length and push it to result arrays
+    //increment index of pushed array 
+    while(i<arr1.length && arr2.length){
+        if(arr1[i] < arr2[j]){
+            res.push(arr1[i]);
+            i++;
         }
-
-        while(i<llen){
-            a[k] = l[i];
-            k = k+1;
-            i=i+1;
-        }
-        while(j<rlen){
-            a[k] = r[j];
-            k = k+1;
-            j = j+1;
-        }
-      
-            
-    }
-
-    function MergeSort(array){
-        let len = array.length;
-        if(len<2){
-            return array;
-        }
-        else{
-            let startIndex = 0;
-            let endIndex = len - 1;
-            let mid = Math.floor((startIndex+endIndex)/2);
-            let leftArr = [],rightArr = [];
-            for(let i=0;i<=mid;i++){
-                leftArr.push(array[i]);
-            }
-            for(let j=len-1;j>mid;j--){
-                rightArr.push(array[j]);
-            }
-            MergeSort(leftArr);
-            MergeSort(rightArr);
-            Merge(leftArr,rightArr,array);
+        else {
+            res.push(arr2[j]);
+            j++;
         }
     }
 
-MergeSort(array);
-console.log("The sorted array using merge sort  "+array.toString());
+    //if some elements are left in arr1, means if arr1 has more elements than arr2
+    //push all elements to result array as remaining elements are already sorted
+    while(i<arr1.length){
+        res.push(arr1[i]);
+        i++;
+    }
+
+     //if some elements are left in arr2, means if arr2 has more elements than arr1
+    //push all elements to result array as remaining elements are already sorted
+      while(j<arr2.length){
+        res.push(arr2[j]);
+        j++;
+    }
+
+    return res;
+
+}
+
+
+function mergeSort(arr){
+    if(arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length/2);
+    let left = mergeSort(arr.slice(0,mid));
+    let right = mergeSort(arr.slice(mid));
+    return merge(left,right);
+}
+
+mergeSort([10,24,76,73]);
