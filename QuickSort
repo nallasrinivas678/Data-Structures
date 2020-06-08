@@ -1,0 +1,45 @@
+//Quick Sort algorithm
+
+function pivot(arr,start=0,end= arr.length-1){
+
+    function swap(array,i,j){
+            let temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+    }
+
+    //consider pivot always first element.
+    let pivot = arr[start];
+    let swapIdx =  start;
+    for(let i=start+1;i<= end;i++){
+        if(pivot > arr[i]){
+          swapIdx++;
+          swap(arr,swapIdx,i);
+        }
+    }
+    swap(arr,start,swapIdx);  
+    console.log(arr); 
+    return swapIdx;
+}
+
+function quickSort(arr,left=0,right=arr.length-1){
+
+    //where to stop recursion, until one element left
+    if(left < right){
+
+        //get pivotIndex
+        let pivotIdx = pivot(arr,left,right);
+        console.log(pivotIdx);
+
+        // recursion to sort left side of array
+        quickSort(arr,left,pivotIdx-1);
+
+        //recursion to sort right side of array
+        quickSort(arr,pivotIdx+1,right);
+    }
+
+    return arr;
+
+}
+
+quickSort([4,8,2,1,5,9,7,6,3,76])
