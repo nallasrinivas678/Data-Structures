@@ -1,0 +1,22 @@
+//question: count unique values in sorted array. there can be negative values in array but it is sorted array.
+
+//use multiple pointers pattern
+//eg: [1,1,2,3,3,4,5,6,6,7]
+//idea is to start two pointers from the begining i=0 and j=1. 
+//check values at i and j, if arr[i] !== arr[j] move i to next place and then update arr[i] = arr[j]
+
+const countUniqueValues = (arr) => {
+   let i = 0;
+   
+   for(var j=1;j < arr.length; j++){
+       if(arr[i] !== arr[j]){
+           i++;
+           arr[i] = arr[j];
+       }
+      console.log(i,j);
+   }
+   return i+1;   //index+1 -> total count of unique values
+    
+}
+
+console.log(countUniqueValues([1,1,2,3,3,4,5,6,6,7]));
