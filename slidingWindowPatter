@@ -1,0 +1,27 @@
+//[2,6,9,2,1,8,5,6,3] , n: consecutive numbers eg: 3
+//question given an array find the max consecutive sum subarray.
+
+
+//idea is to use sliding window pattern
+//use 2 variables tempSum and maxSum
+//calculate sum of first n numbers
+//Idea is to instead of calculating consecutive numbers all the time, 
+//use sliding technique to subtract previous first element and add loop starting
+
+const maxSubArraySum = (arr, num) =>{
+let tempSum = 0;
+let maxSum = 0;
+    for(var i=0;i < num; i++){
+        maxSum += arr[i];
+    }
+    tempSum = maxSum;
+
+    for(var j=num; j < arr.length ; j++){
+        tempSum = tempSum - arr[j-num]+arr[j];  //sliding pattern
+        maxSum = Math.max(maxSum, tempSum);
+    }
+    return maxSum;
+}
+
+    
+console.log(maxSubArraySum([2,6,9,2,1,8,5,6,3], 3))
