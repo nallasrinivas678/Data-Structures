@@ -1,0 +1,66 @@
+//problem , given a N*N matrix, rotate it by 90 degrees
+//rotate image by 90 degrees
+let array = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+
+//4*4 matrix
+let array2 = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12],
+    [13,14,15,16]
+]
+
+//result should be [
+//[7,8,9],
+//[4,5,6],
+//[1,2,3]
+//]
+
+//solution :
+//step1:transpose matrix( rows will become columns and columns will become rows)
+//Transpose - swap(arr[i][j], arr[j][i])
+//note: arr[0][0] swaps = arr[0][0], swapping diagnoal elements will not change the elements
+//step2: swap elements from left and right.
+
+const printArray = (array) => {
+    for(let i=0; i< array.length; i++){
+        for(j=0; j < array[i].length;j++){
+            console.log(array[i][j]);
+        }
+    }
+}
+
+
+const rotateMatrix = (arr) => {
+
+    //step1: transpose
+    for(i=0; i < arr.length; i++){
+        for(j=i; j< arr[i].length;j++){
+            let temp = arr[i][j];
+            arr[i][j] = arr[j][i];
+            arr[j][i] = temp;
+        }
+    }
+
+    let endIndex = arr.length-1;
+    
+    //step2: flip columns horizontally, this is like two pointers starting from right endIndex
+    //so looping till mid array is enough
+   for(i=0; i < arr.length; i++){
+        for(j=0; j< (arr.length/2);j++){
+            let temp = arr[i][j];
+            arr[i][j] = arr[i][arr.length - 1- j];
+            arr[i][arr.length - 1- j] = temp;
+        }
+    }
+    
+    console.log(printArray(arr));
+    
+}
+
+//printArray(array);
+rotateMatrix(array2);
