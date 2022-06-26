@@ -1,0 +1,27 @@
+//problem: given two strings first string should be presenet in the second string (should be sequence in second string)
+//eg: isSubsequenc("hello", "hello my name isSubsequenc") //true
+//note the order of the string should be same
+
+//use multiple pointers - 2 pointers starting from str1, and another for str2
+
+const isSubsequence = (str1, str2) => {
+
+   let i = 0;
+   let j = 0;
+    if(str1.length === 0) return true;
+
+    //complete str2 traversal
+    while(j < str2.length){
+        if(str1[i] === str2[j]) i++;  //move next for i
+
+        if(i === str1.length) return true; //if str1 length ends, it means isSubsequence
+        
+       j++; //move j pointer next
+        
+    }
+
+    return false
+    
+    
+    
+}
