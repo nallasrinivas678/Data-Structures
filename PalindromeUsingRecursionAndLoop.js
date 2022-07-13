@@ -10,4 +10,19 @@ function isPalindrome(str){
   return false;
 }
 
+function isPalindromeUsingLoop(str){
+  if(str.length === 1) return str;
+
+  if(str.length === 2) return str[0] === str[1];
+
+  let len = str.length;
+  
+  for(let i = 0; i < len/2; i++){
+    if(str[i] !== str[len -1 - i]) return false;
+  }
+
+  return true;
+  
+}
+
 isPalindrome("madam")
