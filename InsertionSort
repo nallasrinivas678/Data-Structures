@@ -24,4 +24,27 @@ function insertionSort(arr){
     return arr;
 }
 
+//Alternate solution
+function insertionSort(array) {
+
+  //idea is to insert at the begining, so loop start at index 1
+  //decrement the j in while loop, bcoz the track previous number as i increments
+for(let i=1; i < array.length; i++){
+  let j = i;
+
+  while(j > 0 && array[j] < array[j-1]){
+    array = swap(j, j-1, array);
+    j = j-1;
+  }
+}
+  return array;
+}
+
+function swap(i,j, array){
+  let temp = array[j];
+  array[j] = array[i];
+  array[i] = temp;
+  return array;
+}
+
 insertionSort([2,1,9,76,4])
