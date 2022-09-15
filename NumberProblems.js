@@ -38,4 +38,22 @@ function GCD(num1, num2){
     
 }
 
+
+function ArmstrongNumber(num){
+    // 153 -> 1 power 3+ 5 power 3+ 3 power 3
+    //count digits
+    var sum = 0
+    var originialNum = num;
+
+    var count = countDigitsInNumber(num);
+
+    while(num != 0){
+        var digit = num % 10;
+        sum += Math.pow(digit, count);
+        num = Math.floor(num / 10);
+    }
+    
+    return sum === originialNum;
+}
+
 console.log(reverseNumber(12345));
