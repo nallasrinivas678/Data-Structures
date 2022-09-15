@@ -12,6 +12,18 @@ function reverseNumber(num){
     return revNum;
 }
 
+function countDigitsInNumber(num){
+
+    var counter = 0;
+    var x = num;
+    while(x !== 0){
+        x = Math.floor(x/10);
+        console.log(x);
+        counter++
+    }
+    return counter;
+    
+}
 
 
 function GCD(num1, num2){
