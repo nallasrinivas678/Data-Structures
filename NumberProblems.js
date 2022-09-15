@@ -12,4 +12,18 @@ function reverseNumber(num){
     return revNum;
 }
 
+
+
+function GCD(num1, num2){
+    //Idea is to traverse from 1 to min(num1, num2)
+    var gcd = 1;
+    for(let i= 1; i <= Math.min(num1, num2); i++){
+        if(num1 % i === 0 && num2 % i === 0 ){
+            gcd = i;
+        }
+    }
+    return gcd;
+    
+}
+
 console.log(reverseNumber(12345));
