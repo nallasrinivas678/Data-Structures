@@ -17,6 +17,22 @@ const depthFirstSearch = (graph, sourceNode) => {
     
 }
 
+const breadthFirstSearch = (graph, sourceNode) => {
+   //use Queue
+
+    const queue = [sourceNode];
+
+    while(queue.length > 0){
+        const current = queue.shift();
+
+        console.log(current);
+
+        for(let neighbor of graph[current]){
+            queue.push(neighbor);
+        }
+    }
+}
+
 
 const graph = {
     a: ['c', 'b'],
@@ -28,3 +44,5 @@ const graph = {
 }
 
 depthFirstSearch(graph, 'a');
+
+breadthFirstSearch(graph, 'a');
