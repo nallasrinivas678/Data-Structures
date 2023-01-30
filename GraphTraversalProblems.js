@@ -68,9 +68,63 @@ const hasPath = (graph, src, dst) => {
 
     return false;
 }
-    
+
+
+//Problem: Given edges array , find if there any path exists b/w nodeA and nodeB
+const undirectedPath = (edges, nodeA, nodeB) => {
+ //convert given edges array to graph structure for easy traversal
+ const graph = buildGraph(edges);
+
+  return hasPath(graph, nodeA, nodeB, new Set());
+};
+
+const hasPath = (graph, src, dst, visited) => {
+ if(src === dst) return true;
+
+    //use Set data structure to prevent traversing visted nodes
+  if(visited.has(src)) return false;
+
+  visited.add(src);
+
+  for(let neighbor of graph[src]){
+
+    if(hasPath(graph, neighbor, dst, visited) === true)
+      return true;
+  }
+  
+  return false;
+  
+  
+}
+
+const buildGraph = (edges) => {
+   const graph = {};
+
+  for(let edge of edges){
+    const [a,b] = edge;
+      
+      //If a doesnt exist in graph create it as empty array
+    if(!(a in graph)) graph[a] = [];
+
+    if(!(b in graph)) graph[b] = [];
+
+      //push b for a and vice versa as its undirected path
+    graph[a].push(b);
+    graph[b].push(a);
+  }
+  return graph;
+}
+
+   
   
 
+const edges = [
+  ['w', 'x'],
+  ['x', 'y'],
+  ['z', 'y'],
+  ['z', 'v'],
+  ['w', 'v']
+];
 
 const graph = {
     a: ['c', 'b'],
