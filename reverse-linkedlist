@@ -1,0 +1,31 @@
+const reverseLinkedList = (head) => {
+ //Idea is to change direction of linked list values
+ //Consider three variables as prev, curr (head), next (curr.next)
+ //Initially prev = null, set curr.next = prev to change head as tail
+ //loop through head node till its became null and 
+ //for every iteration change node direction and move forward
+
+var prev = null;
+var curr = head;
+var next = null;
+
+ while(curr !== null){
+  next = curr.next;  //store next val in next before changing curr.next to prev
+  curr.next = prev //to change direction
+  prev = curr; //moving in iteration, 
+  curr = next; //moving forward in iteration
+  
+ }
+
+ return prev; //when curr became null it means it reaches end and our prev will become new head
+ 
+}
+
+
+var head;
+head = new Node(85);
+head.next = new Node(15);
+head.next.next = new Node(4);
+head.next.next.next = new Node(20);
+
+console.log(reverseLinkedList(head));
