@@ -57,6 +57,74 @@ class DoublyLinkedList {
         this.length--;
         return poppedNode;
     }
+
+    //remove first element in list and return returned element
+    shift(){
+        if(this.length === 0) return undefined;
+        
+        var oldHead = this.head;
+        
+     
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+           
+        }
+        else {
+            this.head = oldHead.next;
+            this.head.prev = null
+            oldHead.next = null;
+        }
+
+         this.length--;
+         return node;
+    }
+
+    //Add element at the begining 
+    unshift(val){
+
+        var newNode = new Node(val);
+        
+        if(this.length === 0){
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        else {
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+
+        this.length++;
+        return this;
+        
+    }
+
+    get(index){
+
+        //Optimization: If index length is less than half of list loop from head else loop from tail
+
+        if(index < 0 || index >= this.length) return null;
+        var count, current;
+        if(index <= this.length/2){
+            count = 0;
+            current = this.head;
+            while(count !== index){
+                current = current.next;
+                count++;
+            }
+        } else {
+            count = this.length - 1;
+            current = this.tail;
+            while(count !== index){
+                current = current.prev;
+                count--;
+            }
+        }
+        return current;
+        
+    }
+    
 }
 
 var first = new Node(12);
