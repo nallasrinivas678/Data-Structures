@@ -104,3 +104,14 @@ class LRU {
         
     }
 }
+
+
+const lruCache = new LRU(3);
+lruCache.write('a', 123);
+lruCache.write('b', 456);
+lruCache.write('c', 789); // lru is 'a'
+lruCache.read('a'); // lru is 'b'
+
+// Now max limit 3 is reached. Let's add a new element
+lruCache.write('d', 0); // lru 'b' is removed
+console.log(lruCache);
