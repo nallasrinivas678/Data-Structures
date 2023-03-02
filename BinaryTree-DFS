@@ -1,0 +1,35 @@
+ class Node {
+   constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+ }
+ 
+ 
+/Recursive approach
+const depthFirstValues = (root) => {
+  if(root === null) return [];
+  
+  const leftValues = depthFirstValues(root.left);
+  const rightValues = depthFirstValues(root.right);
+  
+  return [root.val, ...leftValues, ...rightValues];
+  
+};
+
+//Iterative approach - use stack for DFS and queue for BFS
+if(root === null) return [];
+  
+  let stack = [root];
+  let result = [];
+  
+  while(stack.length > 0){
+    let current = stack.pop();
+    result.push(current.val);
+    
+    if(current.right) stack.push(current.right);
+    if(current.left)  stack.push(current.left);
+  }
+  
+  return result;
