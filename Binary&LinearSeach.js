@@ -36,6 +36,7 @@ function BinarySearch(array,target){
 }
 
 //BinarySearch(array, 87);
+//Comments
 
 function LinearSearch(array,targetElement)
 {
