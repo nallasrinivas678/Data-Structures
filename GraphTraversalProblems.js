@@ -17,6 +17,15 @@ const depthFirstSearch = (graph, sourceNode) => {
     
 }
 
+//Recurison DFS
+const depthFirstSearchRecursive = (graph, source) => {
+    console.log(source);
+    //Base case - if any node has no elements in it, it wont go inside for loop
+    for (let neighbor of graph[source]){
+        depthFirstSearchRecursive(graph,neighbor);
+    }
+}
+
 const breadthFirstSearch = (graph, sourceNode) => {
    //use Queue
 
